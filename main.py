@@ -57,12 +57,6 @@ def pending(decision):
     canvas.create_image(0,0, image=frame, anchor=tkinter.NW)
     # 2. Wait for a second
     time.sleep(1)
-    # # 3. Display sponsor image
-    # frame = cv2.cvtColor(cv2.imread("sponsor.png"), cv2.COLOR_BGR2RGB)
-    # frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
-    # frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
-    # canvas.image = frame
-    # canvas.create_image(0,0, image=frame, anchor=tkinter.NW)
     # 4. Wait for 1.5 second
     # to wait for 1.5 seconds time.sleep func is used to sleep the program for 1.5 sec
     time.sleep(1.5)
@@ -83,12 +77,16 @@ def pending(decision):
 
 def out():
     # used threading and called pending function
+    # pending function is called using threading because IN BETWEEN OF VIDEO FRAMES A OUT or NOT-OUT IMAGE HAS
+    # HAS TO BE DISPLAYED. IF WE DIPLAY IT WITHOUT USING THREADING IT WILL GO OUT OF LOOP AND APPLICATION WILL END
     thread = threading.Thread(target=pending, args=("out",))
     thread.daemon = 1
     thread.start()
 
 def not_out():
-    # used threadiing func and called pending funcion
+    # used threading and called pending function
+    # pending function is called using threading because IN BETWEEN OF VIDEO FRAMES A OUT or NOT-OUT IMAGE HAS
+    # HAS TO BE DISPLAYED. IF WE DIPLAY IT WITHOUT USING THREADING IT WILL GO OUT OF LOOP AND APPLICATION WILL END
     thread = threading.Thread(target=pending, args=("not out",))
     thread.daemon = 1
     thread.start()
@@ -127,6 +125,4 @@ btn = tkinter.Button(window, text="Give Not Out", width=50, command=not_out)
 btn.pack()
 
 # this is the mainloop for tkinter and we didn't want it to be blocked so we used threading
-# now mainloop should go on after every button click so we used multi Threading
-# in this way main loop will go on and on and not stop or end the program/application
 window.mainloop()
