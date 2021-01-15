@@ -98,7 +98,7 @@ def not_out():
 window = tkinter.Tk()
 # window title
 window.title("Decision Review System")
-# reading img usning cv2
+# reading image using imread and then converting it from BGR format to RGB format using cvtcolor function 
 cv_img = cv2.cvtColor(cv2.imread("drs.png"),cv2.COLOR_BGR2RGB)
 # packing/displaying image read by cv2 into Tkinter GUi
 canvas = tkinter.Canvas(window, width=SET_WIDTH, height=SET_HEIGHT)
