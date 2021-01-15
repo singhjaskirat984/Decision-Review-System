@@ -127,4 +127,6 @@ btn = tkinter.Button(window, text="Give Not Out", width=50, command=not_out)
 btn.pack()
 
 # this is the mainloop for tkinter and we didn't want it to be blocked so we used threading
+# now mainloop should go on after every button click so we used multi Threading
+# in this way main loop will go on and on and not stop or end the program/application
 window.mainloop()
